@@ -1,0 +1,25 @@
+{
+  "name": "my-needle-engine-project",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "start": "npm run dev",
+    "build": "vite build -- --production",
+    "build:production": "npm run build",
+    "build:dev": "vite build"
+  },
+  "dependencies": {
+	  "@needle-tools/engine": "5.1.4",
+	  "three": "npm:@needle-tools/three@0.169.19",
+	  "@needle-tools/samples-scripts": "file:../../PackageCache/com.needle.engine-samples@493d87266351/Runtime/_Shared/SampleScripts~"
+	},
+  "devDependencies": {
+	  "@needle-tools/helper": "2.0.0",
+	  "@types/three": "0.169.0",
+	  "@vitejs/plugin-basic-ssl": "^2.2.0",
+	  "typescript": "^5.0.4",
+	  "vite": "^8.0.0",
+	  "vite-plugin-compression2": "^2.5.2"
+	}
+}
