@@ -1,28 +1,10 @@
 import("@needle-tools/engine") /* async import of needle engine */;
-import { Context, GameObject, SceneSwitcher, NeedleXRSession, generateQRCode } from "@needle-tools/engine";
+import { Context, GameObject, SceneSwitcher, NeedleXRSession } from "@needle-tools/engine";
 import { BrickGameScreen } from "./scripts/BrickGameScreen";
 import { setupBrickGameUI } from "./scripts/BrickGameControls";
 
 // Setup the HTML gamepad overlay (D-pad + Start/Rotate buttons)
 setupBrickGameUI();
-
-// Generate QR code asynchronously — don't block main flow
-(async () => {
-    try {
-        const qrContainer = document.getElementById("qr-code-overlay");
-        if (!qrContainer) return;
-        const qr = await generateQRCode({ text: window.location.href, size: 180 });
-        qr.style.width = "180px";
-        qr.style.height = "180px";
-        qr.style.display = "block";
-        qrContainer.appendChild(qr);
-        qrContainer.addEventListener("click", () => {
-            qrContainer.style.display = "none";
-        });
-    } catch (e) {
-        console.warn("[BrickGame] QR code generation failed:", e);
-    }
-})();
 
 // Wait for the Needle Engine context to be ready, then attach the game component
 const waitForScene = setInterval(() => {
@@ -40,6 +22,21 @@ const waitForScene = setInterval(() => {
 
         if (!GameObject.getComponent(Context.Current.scene, BrickGameScreen)) {
             GameObject.addComponent(Context.Current.scene, BrickGameScreen);
+        }
+
+        // Generate QR code from a QR API as an image — no extra imports or CDN scripts needed
+        const qrContainer = document.getElementById("qr-code-overlay");
+        if (qrContainer) {
+            const img = document.createElement("img");
+            img.src = "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=" + encodeURIComponent(window.location.href);
+            img.alt = "QR code";
+            img.style.width = "180px";
+            img.style.height = "180px";
+            img.style.display = "block";
+            qrContainer.appendChild(img);
+            qrContainer.addEventListener("click", () => {
+                qrContainer.style.display = "none";
+            });
         }
 
         // Auto-enter AR mode as the default experience

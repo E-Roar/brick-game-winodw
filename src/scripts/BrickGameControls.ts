@@ -136,12 +136,5 @@ export function setupBrickGameUI() {
     uiContainer.appendChild(dpad);
     uiContainer.appendChild(actions);
 
-    // Append inside <needle-engine> so it becomes part of the AR DOM overlay
-    // (Needle Engine reparents children of <needle-engine> into the AR overlay during immersive-ar sessions)
-    const engine = document.querySelector("needle-engine");
-    if (engine) {
-        engine.appendChild(uiContainer);
-    } else {
-        document.body.appendChild(uiContainer);
-    }
+    document.body.appendChild(uiContainer);
 }
