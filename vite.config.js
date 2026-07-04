@@ -11,7 +11,7 @@ export default defineConfig(async ({ command }) => {
         base: "./",
         plugins: [
             basicSsl(),
-            useGzip(needleConfig) ? viteCompression({ ddeleteOriginalAssets: true, algorithms: ['gzip']}) : null,
+            useGzip(needleConfig) ? viteCompression({ deleteOriginalAssets: true, algorithms: ['gzip']}) : null,
             needlePlugins(command, needleConfig, { noBuildPipeline: true }),
         ],
         server: {
