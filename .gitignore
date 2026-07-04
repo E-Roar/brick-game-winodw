@@ -37,5 +37,19 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
+# Secrets & env
+.env*.local
+Needle/SampleScene/.env*.local
+
+# Vercel
+.vercel/
+Needle/SampleScene/.vercel/
+
+# PackageCache (Unity symlink)
+PackageCache
+
+# Internal instructions (not for repo)
+OPENCODE_INSTRUCTIONS.md
+
 # Scratch
 scratch/

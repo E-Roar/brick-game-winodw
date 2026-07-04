@@ -59,7 +59,7 @@ export class HelloWorld extends Behaviour {
 Scaffold a project with `npm create needle`, write TypeScript components, and build scenes entirely from code. Use `onStart`, `onUpdate`, and other lifecycle hooks to set up scenes, or create components extending `Behaviour`. This is a fully supported first-class workflow.
 
 **CDN with import maps (no bundler):**
-For quick prototypes, embedding in existing sites, or projects without a build pipeline. Use `<script type="importmap">` to map bare specifiers to CDN URLs, then write standard ES module code with `import` statements — no Vite, no npm, no `node_modules` required. **Important:** three.js must come from `@needle-tools/engine/dist/three.min.js`, not a standalone three.js CDN. See [CDN & Import Maps](./references/integration.md) for full examples and rules.
+For quick prototypes, embedding in existing sites, or projects without a build pipeline. Use `<script type="importmap">` to map bare specifiers to CDN URLs, then write standard ES module code with `import` statements — no Vite, no npm, no `node_modules` required. **Important:** three.js must come from `@needle-tools/engine/dist/three.min.js`, not a standalone three.js CDN. See [CDN & Import Maps](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/integration.md) for full examples and rules.
 
 **Unity or Blender as visual editors:**
 Unity/Blender export scenes as GLB files into `assets/`, with component data serialized in glTF extensions. At runtime, the engine deserializes this into TypeScript components. A component compiler auto-generates C# stubs (Unity) or JSON (Blender) so custom TS components appear in the editor inspector. The editors are tools for visual scene setup; the runtime is pure web/TypeScript. Note: the editor controls the engine version in `package.json` — to force a version, use `"@needle-tools/engine": "npm:@needle-tools/engine@5.0.1"`.
@@ -103,7 +103,7 @@ document.querySelector("needle-engine")?.addEventListener("loadfinished", (ev) =
 ```
 
 **From a framework component (React, Svelte, Vue):**
-Use lifecycle hooks with dynamic imports to avoid SSR issues — see [Framework Integration](./references/integration.md) for patterns.
+Use lifecycle hooks with dynamic imports to avoid SSR issues — see [Framework Integration](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/integration.md) for patterns.
 
 ### How data flows
 
@@ -288,7 +288,7 @@ jobs:
           name: my-project  # IMPORTANT: set a project name, otherwise defaults to "index"
 ```
 
-The user needs a `NEEDLE_CLOUD_TOKEN` secret in their repo settings (get from https://cloud.needle.tools/team). For manual CLI deployment, always pass `--name`: `npx needle-cloud deploy dist --name my-project`. See [references/deployment.md](./references/deployment.md) for more options.
+The user needs a `NEEDLE_CLOUD_TOKEN` secret in their repo settings (get from https://cloud.needle.tools/team). For manual CLI deployment, always pass `--name`: `npx needle-cloud deploy dist --name my-project`. See [references/deployment.md](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/deployment.md) for more options.
 
 **Important:** `vite.config.ts` must have `base: './'` (the `npm create needle` scaffolder includes this by default). If it's missing or removed, Needle Cloud deploys break — assets get absolute `/assets/...` paths that don't resolve when served from a subdirectory.
 
@@ -308,13 +308,13 @@ Additional networking components: `SyncedTransform` (sync position/rotation), `@
 
 **Key concept — guid persistence:** Messages with a `guid` field are stored on the server as room state and sent to late joiners. Messages without `guid` are ephemeral (fire-and-forget). This is how `@syncField` and `SyncedTransform` work under the hood.
 
-For full networking API, code examples, and details on each layer, read [references/networking.md](./references/networking.md).
+For full networking API, code examples, and details on each layer, read [references/networking.md](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/networking.md).
 
 ---
 
 ## Built-in Components (Quick Reference)
 
-These are commonly used components — all imported from `@needle-tools/engine`. See [api.md](./references/api.md) for full details.
+These are commonly used components — all imported from `@needle-tools/engine`. See [api.md](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/api.md) for full details.
 
 | Component | Purpose |
 |---|---|
@@ -413,17 +413,17 @@ Use this *before* guessing at API details — the docs are the source of truth.
 
 Read these **only when needed** — don't load them all upfront:
 
-- 📖 [Core API](./references/api.md) — lifecycle, decorators, context (input, physics, time), gameobject, coroutines, asset loading, renderer/materials, async modules
-- 🧩 [Components](./references/components.md) — animation, audio, video, lighting, camera, scene switching, interaction, splines, particles, debug tools
-- ⚡ [Physics](./references/physics.md) — colliders, Rigidbody (forces, velocity, impulse), raycasting, async Rapier loading
-- 🎨 [Post-Processing](./references/postprocessing.md) — context.postprocessing API, all built-in effects with parameters
-- 🌐 [Networking](./references/networking.md) — connection API, SyncedRoom, PlayerSync, @syncField, SyncedTransform, Voip, ScreenCapture, guid persistence
-- 🥽 [WebXR](./references/xr.md) — VR/AR sessions, XRRig, controllers, pointer events in XR, image tracking, depth sensing, camera access, mesh detection, DOM overlay, iOS AR, multiplayer avatars
-- 🚀 [Deployment](./references/deployment.md) — Needle Cloud (GitHub Actions, CLI), Vercel, Netlify, other platforms
-- 🔗 [Framework Integration](./references/integration.md) — React, Svelte, Vue, Next.js, SvelteKit patterns, CDN with import maps
-- 💡 [Component Examples](./references/examples.md) — practical examples: click handling, runtime loading, networking, materials, code-only scenes, input, coroutines
-- 🐛 [Troubleshooting](./references/troubleshooting.md) — error messages, unexpected behavior, build failures, **runtime logs at `node_modules/.needle/logs/`**, build info
-- 🧩 [Component Template](./templates/my-component.ts) — annotated starting point for new components
+- 📖 [Core API](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/api.md) — lifecycle, decorators, context (input, physics, time), gameobject, coroutines, asset loading, renderer/materials, async modules
+- 🧩 [Components](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/components.md) — animation, audio, video, lighting, camera, scene switching, interaction, splines, particles, debug tools
+- ⚡ [Physics](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/physics.md) — colliders, Rigidbody (forces, velocity, impulse), raycasting, async Rapier loading
+- 🎨 [Post-Processing](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/postprocessing.md) — context.postprocessing API, all built-in effects with parameters
+- 🌐 [Networking](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/networking.md) — connection API, SyncedRoom, PlayerSync, @syncField, SyncedTransform, Voip, ScreenCapture, guid persistence
+- 🥽 [WebXR](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/xr.md) — VR/AR sessions, XRRig, controllers, pointer events in XR, image tracking, depth sensing, camera access, mesh detection, DOM overlay, iOS AR, multiplayer avatars
+- 🚀 [Deployment](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/deployment.md) — Needle Cloud (GitHub Actions, CLI), Vercel, Netlify, other platforms
+- 🔗 [Framework Integration](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/integration.md) — React, Svelte, Vue, Next.js, SvelteKit patterns, CDN with import maps
+- 💡 [Component Examples](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/examples.md) — practical examples: click handling, runtime loading, networking, materials, code-only scenes, input, coroutines
+- 🐛 [Troubleshooting](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/references/troubleshooting.md) — error messages, unexpected behavior, build failures, **runtime logs at `node_modules/.needle/logs/`**, build info
+- 🧩 [Component Template](https://raw.githubusercontent.com/needle-tools/ai/refs/heads/main/providers/claude/plugin/skills/needle-engine/templates/my-component.ts) — annotated starting point for new components
 
 ## Important URLs
 

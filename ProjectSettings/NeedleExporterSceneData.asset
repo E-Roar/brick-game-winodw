@@ -15,7 +15,8 @@ MonoBehaviour:
   Scenes:
   - Path: Assets/Samples/Needle Engine/ImageTracking.unity
     Projects:
-    - ProjectPath: Library/Needle/Sample
+    - ProjectPath: Needle/SampleScene
     BuilderScene: 
   Projects:
   - ProjectPath: Library/Needle/Sample
+  - ProjectPath: Needle/SampleScene
