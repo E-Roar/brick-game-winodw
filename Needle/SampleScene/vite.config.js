@@ -12,7 +12,7 @@ export default defineConfig(async ({ command }) => {
         plugins: [
             basicSsl(),
             useGzip(needleConfig) ? viteCompression({ deleteOriginalAssets: true, algorithms: ['gzip']}) : null,
-            needlePlugins(command, needleConfig, { noBuildPipeline: true }),
+            needlePlugins(command, needleConfig, { noBuildPipeline: !!process.env.VERCEL }),
         ],
         server: {
             https: true,

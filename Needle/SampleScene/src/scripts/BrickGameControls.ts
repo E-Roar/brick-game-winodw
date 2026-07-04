@@ -11,7 +11,7 @@ export function setupBrickGameUI() {
         width: "90%",
         maxWidth: "400px",
         height: "150px",
-        display: "flex",
+        display: "none",
         justifyContent: "space-between",
         alignItems: "center",
         pointerEvents: "none",

@@ -39,16 +39,23 @@ const waitForScene = setInterval(() => {
             });
         }
 
-        // Auto-enter AR mode as the default experience
-        setTimeout(async () => {
-            try {
-                await NeedleXRSession.start("ar");
-                console.log("[BrickGame] AR session started");
-                const qr = document.getElementById("qr-code-overlay");
-                if (qr) qr.style.display = "none";
-            } catch (e) {
-                console.warn("[BrickGame] Could not start AR:", e);
-            }
-        }, 1500);
+        // Handle AR splash screen interaction
+        const splash = document.getElementById("ar-splash");
+        if (splash) {
+            splash.addEventListener("click", async () => {
+                splash.style.display = "none";
+                const ui = document.getElementById("brick-game-ui");
+                try {
+                    await NeedleXRSession.start("ar");
+                    console.log("[BrickGame] AR session started");
+                    if (qrContainer) qrContainer.style.display = "none";
+                    if (ui) ui.style.display = "flex";
+                } catch (e) {
+                    console.warn("[BrickGame] Could not start AR, falling back to 3D:", e);
+                    if (qrContainer) qrContainer.style.display = "block";
+                    if (ui) ui.style.display = "flex";
+                }
+            });
+        }
     }
 }, 200);
