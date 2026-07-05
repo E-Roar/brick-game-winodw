@@ -1,52 +1,16 @@
 export function setupBrickGameUI() {
     const uiContainer = document.createElement("div");
     uiContainer.id = "brick-game-ui";
-    
-    // Style the container to be at the bottom of the screen
-    Object.assign(uiContainer.style, {
-        position: "absolute",
-        bottom: "120px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: "90%",
-        maxWidth: "400px",
-        height: "150px",
-        display: "none",
-        justifyContent: "space-between",
-        alignItems: "center",
-        pointerEvents: "none",
-        zIndex: "9999",
-        fontFamily: "monospace"
-    });
+    uiContainer.className = "retro-ui-container";
 
     // D-Pad container
     const dpad = document.createElement("div");
-    Object.assign(dpad.style, {
-        position: "relative",
-        width: "120px",
-        height: "120px",
-        pointerEvents: "auto"
-    });
+    dpad.className = "retro-dpad";
 
-    const createBtn = (text: string, left: string, top: string, callback: () => void) => {
+    const createBtn = (text: string, extraClass: string, callback: () => void) => {
         const btn = document.createElement("button");
         btn.innerText = text;
-        Object.assign(btn.style, {
-            position: "absolute",
-            left: left,
-            top: top,
-            width: "40px",
-            height: "40px",
-            backgroundColor: "rgba(255, 255, 255, 0.5)",
-            border: "2px solid #333",
-            borderRadius: "5px",
-            fontSize: "16px",
-            fontWeight: "bold",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            userSelect: "none"
-        });
+        btn.className = `retro-btn dpad-btn ${extraClass}`;
         
         // Touch and mouse events
         const trigger = (e: Event) => {
@@ -60,17 +24,17 @@ export function setupBrickGameUI() {
 
     const getGame = () => (window as any).brickGame;
 
-    const leftBtn = createBtn("◄", "0px", "40px", () => {
+    const leftBtn = createBtn("◄", "btn-left", () => {
         const game = getGame();
         if (game) { game.initAudio(); game.move(-1); }
     });
     
-    const rightBtn = createBtn("►", "80px", "40px", () => {
+    const rightBtn = createBtn("►", "btn-right", () => {
         const game = getGame();
         if (game) { game.initAudio(); game.move(1); }
     });
     
-    const downBtn = createBtn("▼", "40px", "80px", () => {
+    const downBtn = createBtn("▼", "btn-down", () => {
         const game = getGame();
         if (game) { game.initAudio(); game.drop(); }
     });
@@ -81,24 +45,11 @@ export function setupBrickGameUI() {
 
     // Actions container
     const actions = document.createElement("div");
-    Object.assign(actions.style, {
-        display: "flex",
-        flexDirection: "column",
-        gap: "10px",
-        pointerEvents: "auto"
-    });
+    actions.className = "retro-actions";
 
     const startBtn = document.createElement("button");
     startBtn.innerText = "START";
-    Object.assign(startBtn.style, {
-        padding: "10px 20px",
-        backgroundColor: "rgba(255, 50, 50, 0.7)",
-        color: "white",
-        border: "2px solid #333",
-        borderRadius: "20px",
-        fontWeight: "bold",
-        userSelect: "none"
-    });
+    startBtn.className = "retro-btn action-btn-start";
     const triggerStart = (e: Event) => {
         e.preventDefault();
         const game = getGame();
@@ -112,16 +63,7 @@ export function setupBrickGameUI() {
 
     const rotateBtn = document.createElement("button");
     rotateBtn.innerText = "ROTATE";
-    Object.assign(rotateBtn.style, {
-        width: "60px",
-        height: "60px",
-        borderRadius: "50%",
-        backgroundColor: "rgba(50, 50, 255, 0.7)",
-        color: "white",
-        border: "2px solid #333",
-        fontWeight: "bold",
-        userSelect: "none"
-    });
+    rotateBtn.className = "retro-btn action-btn-rotate";
     const triggerRotate = (e: Event) => {
         e.preventDefault();
         const game = getGame();
@@ -136,5 +78,12 @@ export function setupBrickGameUI() {
     uiContainer.appendChild(dpad);
     uiContainer.appendChild(actions);
 
-    document.body.appendChild(uiContainer);
+    // Wait until needle-engine is in the DOM to append, so it becomes part of the AR DOM overlay
+    const checkEngine = setInterval(() => {
+        const engine = document.querySelector("needle-engine");
+        if (engine) {
+            clearInterval(checkEngine);
+            engine.appendChild(uiContainer);
+        }
+    }, 100);
 }

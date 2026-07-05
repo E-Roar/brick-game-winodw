@@ -15,29 +15,110 @@ needle-engine {
     height: 100%;
 }
 
-#qr-code-overlay {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 10000;
-    background: white;
-    border-radius: 12px;
-    padding: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    text-align: center;
+needle-logo-element {
+    display: none !important;
+}
+
+/* Override Needle Engine's built-in QR code popup position */
+needle-engine div:has(> .qr-code-container),
+needle-engine div:has(.qr-code-container) {
+    top: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: auto !important;
+    right: auto !important;
+    margin: 0 !important;
+}
+
+/* Retro Glass Gamepad UI */
+.retro-ui-container {
+    position: absolute;
+    bottom: 80px; /* Clear Needle's bottom menu */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    maxWidth: 400px;
+    height: 120px;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none; /* Let clicks pass through empty space */
+    z-index: 9999;
+    font-family: monospace, 'Courier New', Courier, serif;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.retro-dpad {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    pointer-events: auto;
+}
+
+.retro-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    pointer-events: auto;
+}
+
+.retro-btn {
+    background: rgba(10, 20, 10, 0.5); /* Semi-transparent retro green-black */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px outset rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 0 #000;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.05s ease, background 0.1s ease, box-shadow 0.05s ease;
 }
 
-#qr-code-overlay p {
-    margin: 0 0 8px 0;
-    font-family: sans-serif;
-    font-size: 12px;
-    color: #333;
+.retro-btn:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.2);
+    border-style: inset;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-#qr-code-overlay canvas {
-    display: block;
-    margin: 0 auto;
+.dpad-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+}
+
+.btn-left { left: 0px; top: 40px; }
+.btn-right { left: 80px; top: 40px; }
+.btn-down { left: 40px; top: 80px; }
+
+.action-btn-start {
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: rgba(200, 30, 30, 0.5);
+    border-color: rgba(255, 100, 100, 0.4);
+}
+.action-btn-start:active {
+    background: rgba(200, 30, 30, 0.7);
+}
+
+.action-btn-rotate {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: rgba(30, 100, 200, 0.5);
+    border-color: rgba(100, 150, 255, 0.4);
+}
+.action-btn-rotate:active {
+    background: rgba(30, 100, 200, 0.7);
 }
 
 #ar-splash {
