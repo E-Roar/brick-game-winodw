@@ -5,6 +5,7 @@ html {
 body {
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 needle-engine {
@@ -15,19 +16,25 @@ needle-engine {
     height: 100%;
 }
 
+/* React Game Overlay — keyboard buttons float above the 3D canvas */
+#react-root {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 10000;
+    pointer-events: none; /* let clicks pass through to 3D scene */
+}
+
 needle-logo-element {
     display: none !important;
 }
 
-/* Override Needle Engine's built-in QR code popup position */
+/* Hide Needle Engine's built-in QR code marker button */
 needle-engine div:has(> .qr-code-container),
 needle-engine div:has(.qr-code-container) {
-    top: 20px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    bottom: auto !important;
-    right: auto !important;
-    margin: 0 !important;
+    display: none !important;
 }
 
 /* Retro Glass Gamepad UI */
@@ -37,7 +44,7 @@ needle-engine div:has(.qr-code-container) {
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    maxWidth: 400px;
+    max-width: 400px;
     height: 120px;
     display: none;
     justify-content: space-between;
@@ -127,7 +134,7 @@ needle-engine div:has(.qr-code-container) {
     background: linear-gradient(135deg, #1a2a10 0%, #8ba870 100%);
     z-index: 999999;
     display: flex;
-    justifyContent: center;
+    justify-content: center;
     align-items: center;
     color: white;
     font-family: monospace;
@@ -142,4 +149,62 @@ needle-engine div:has(.qr-code-container) {
 #ar-splash p {
     font-size: 1.2rem;
     opacity: 0.8;
+}
+
+/* Keyboard Overlay Responsive Styles */
+.keyboard-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100vw;
+    max-width: 1000px; /* Allow wider spread on desktop */
+    padding: 0 5vw; /* Responsive horizontal spacing */
+    box-sizing: border-box;
+    pointer-events: none;
+    margin: 0 auto;
+    padding-bottom: 90px; /* Clear Needle's bottom menu */
+}
+
+.dpad-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+    pointer-events: none;
+}
+
+.action-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    pointer-events: none;
+}
+
+.small-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.rotate-action {
+    margin-top: 10px;
+}
+
+/* Mobile responsive layout */
+@media (max-width: 768px) {
+    .keyboard-container {
+        padding: 0 4vw;
+        padding-bottom: 85px; /* Ensure Needle menu is cleared on mobile */
+    }
+    .dpad-container {
+        gap: 5px;
+    }
+    .action-container {
+        gap: 15px;
+    }
+    .small-actions {
+        gap: 8px;
+    }
 }

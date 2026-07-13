@@ -18,7 +18,7 @@
       "hash": "8618f83fe17bf4983699d0290d39217710fafe91"
     },
     "com.needle.engine-exporter": {
-      "version": "5.1.4",
+      "version": "5.1.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {

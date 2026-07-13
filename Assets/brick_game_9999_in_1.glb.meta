@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 035bafd976c818834b47ba4680f64384
+guid: d2db1b61a51829345b3358128abd53fa
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -40,7 +40,7 @@ ScriptedImporter:
   _generateMipMaps: 1
   _useSceneNameIdentifier: 1
   _textureCompression: -50
-  _gltfAsset: '<b>Generator: </b>Sketchfab-14.81.0
+  _gltfAsset: '<b>Generator: </b>Sketchfab-16.33.0
 
     <b>Version: </b>2.0
 
@@ -52,9 +52,6 @@ ScriptedImporter:
   optimizeGameObjects: 0
   materials:
   - {instanceID: 0}
-  - {instanceID: 0}
-  - {instanceID: 0}
-  - {instanceID: 0}
   textures:
   - {instanceID: 0}
   - {instanceID: 0}
@@ -64,11 +61,7 @@ ScriptedImporter:
   hasMaterialData: 1
   hasTextureData: 1
   animations: []
-  _extensions:
-  - name: KHR_materials_specular
-    supported: 1
-    used: 1
-    required: 0
+  _extensions: []
   _textures:
   - texture: {instanceID: 0}
     shouldBeLinear: 0
@@ -77,7 +70,7 @@ ScriptedImporter:
     shouldBeLinear: 1
     shouldBeNormalMap: 0
   - texture: {instanceID: 0}
-    shouldBeLinear: 0
-    shouldBeNormalMap: 0
+    shouldBeLinear: 1
+    shouldBeNormalMap: 1
   _mainAssetIdentifier: scenes/Sketchfab_Scene
   _importPlugins: []

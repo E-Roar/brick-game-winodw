@@ -8,6 +8,7 @@ namespace Needle.Typescript.GeneratedComponents
 	public partial class BrickGameScreen : UnityEngine.MonoBehaviour
 	{
 		public void Start() {}
+		public void OnDestroy() {}
 		public void Update() {}
 	}
 }

@@ -8,12 +8,12 @@
   "absolutePath": "https://localhost:3000",
   "deployOnly": false,
   "needleEditor": null,
+  "allowHotReload": true,
+  "generator": "Unity 6000.3.19f1, Needle Engine Integration @5.1.5",
   "developmentBuild": false,
   "license": {
     "team": "org_hqwxkhsmledf"
   },
-  "allowHotReload": true,
-  "generator": "Unity 6000.3.19f1, Needle Engine Integration @5.1.4",
   "gzip": false,
   "facebookInstantGames": null,
   "useRapier": true

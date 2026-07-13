@@ -1,10 +1,10 @@
 import("@needle-tools/engine") /* async import of needle engine */;
 import { Context, GameObject, SceneSwitcher, NeedleXRSession } from "@needle-tools/engine";
 import { BrickGameScreen } from "./scripts/BrickGameScreen";
-import { setupBrickGameUI } from "./scripts/BrickGameControls";
+import { TrompoFixer } from "./scripts/TrompoFixer";
 
-// Setup the HTML gamepad overlay (D-pad + Start/Rotate buttons)
-setupBrickGameUI();
+// Initialize the React Game Engine & Overlay
+import "./react-game/index.jsx";
 
 function hideNeedleBranding() {
     const menu = document.querySelector("needle-menu");
@@ -59,22 +59,25 @@ const waitForScene = setInterval(() => {
             GameObject.addComponent(Context.Current.scene, BrickGameScreen);
         }
 
-
+        const trompo = Context.Current.scene.getObjectByName("13_trompo_3december2019");
+        if (trompo && !GameObject.getComponent(trompo, TrompoFixer)) {
+            GameObject.addComponent(trompo, TrompoFixer);
+        }
 
         // Handle AR splash screen interaction
         const splash = document.getElementById("ar-splash");
         if (splash) {
-            splash.addEventListener("click", async () => {
+            splash.addEventListener("click", () => {
                 splash.style.display = "none";
                 const ui = document.getElementById("brick-game-ui");
-                try {
-                    await NeedleXRSession.start("ar");
+                
+                NeedleXRSession.start("ar").then(() => {
                     console.log("[BrickGame] AR session started");
                     if (ui) ui.style.display = "flex";
-                } catch (e) {
+                }).catch((e) => {
                     console.warn("[BrickGame] Could not start AR, falling back to 3D:", e);
                     if (ui) ui.style.display = "flex";
-                }
+                });
             });
         }
     }
