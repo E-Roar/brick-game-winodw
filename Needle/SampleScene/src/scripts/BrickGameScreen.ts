@@ -159,7 +159,7 @@ export class BrickGameScreen extends Behaviour {
     private tryApply() {
         this.context.scene.traverse((node: any) => {
             if (this.applied) return;
-            if (node.isMesh && node.name === "Object_8") {
+            if (node.isMesh && node.name === "screen_plane") {
                 this.patchMesh(node);
             }
         });
