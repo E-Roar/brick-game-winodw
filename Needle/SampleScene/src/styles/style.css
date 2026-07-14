@@ -31,10 +31,27 @@ needle-logo-element {
     display: none !important;
 }
 
-/* Hide Needle Engine's built-in QR code marker button */
+/* Hide Needle Engine Menu Buttons (View Marker, Previous/Next Scene) */
+needle-engine::part(qr-code),
 needle-engine div:has(> .qr-code-container),
-needle-engine div:has(.qr-code-container) {
+needle-engine div:has(.qr-code-container),
+needle-menu .qr-code-button,
+needle-menu needle-button[label*="Marker" i],
+needle-menu needle-button[title*="Marker" i],
+needle-menu needle-button[label*="QR" i],
+needle-menu needle-button[title*="QR" i] {
     display: none !important;
+}
+
+@media (max-width: 768px) {
+    needle-engine::part(scene-switcher),
+    needle-menu .scene-switcher,
+    needle-menu .prev,
+    needle-menu .next,
+    needle-menu needle-button[label*="Scene" i],
+    needle-menu needle-button[title*="Scene" i] {
+        display: none !important;
+    }
 }
 
 /* Retro Glass Gamepad UI */
@@ -157,13 +174,11 @@ needle-engine div:has(.qr-code-container) {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
-    width: 100vw;
-    max-width: 1000px; /* Allow wider spread on desktop */
-    padding: 0 5vw; /* Responsive horizontal spacing */
+    width: 100%;
+    max-width: 1000px;
     box-sizing: border-box;
     pointer-events: none;
-    margin: 0 auto;
-    padding-bottom: 90px; /* Clear Needle's bottom menu */
+    padding-bottom: 90px;
 }
 
 .dpad-container {
@@ -195,7 +210,6 @@ needle-engine div:has(.qr-code-container) {
 /* Mobile responsive layout */
 @media (max-width: 768px) {
     .keyboard-container {
-        padding: 0 4vw;
         padding-bottom: 85px; /* Ensure Needle menu is cleared on mobile */
     }
     .dpad-container {

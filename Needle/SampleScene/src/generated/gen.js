@@ -20,7 +20,7 @@ if (typeof window !== "undefined") {
 		const needleEngine = document.querySelector("needle-engine");
 		if(needleEngine && needleEngine.getAttribute("src") === null)
 		{
-			needleEngine.setAttribute("hash", "1783968201766");
+			needleEngine.setAttribute("hash", "1784025519471");
 			needleEngine.setAttribute("src", JSON.stringify(needle_exported_files));
 		}
 	});

@@ -90,6 +90,8 @@ export class BrickGameScreen extends Behaviour {
         this.ctx           = this.canvas.getContext("2d")!;
         this.tex           = new CanvasTexture(this.canvas);
         this.tex.flipY     = true;
+        this.tex.repeat.x  = -1;
+        this.tex.offset.x  = 1;
         this.tex.minFilter = LinearFilter;
         this.tex.magFilter = NearestFilter;
     }

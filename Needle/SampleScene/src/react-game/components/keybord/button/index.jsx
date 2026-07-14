@@ -53,9 +53,10 @@ const Button = ({ color, size, label, position, arrow, type }) => {
       onPointerOut={memoHandleUp}
       onPointerCancel={memoHandleUp}
     >
-      <i className={cn({ [style.active]: active })}/>
-      {size === 's1' && <em style={{ transform: arrow }} />}
-      <span className={cn({ [style.position]: position })}>{label}</span>
+      <i className={cn({ [style.active]: active })}>
+        {/* <em style={{ transform: arrow }} /> */}
+        {/* <span className={cn({ [style.position]: position })}>{label}</span> */}
+      </i>
     </div>
   )
 }
