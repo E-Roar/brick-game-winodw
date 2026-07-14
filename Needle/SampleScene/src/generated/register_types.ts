@@ -1,6 +1,4 @@
-﻿// Import types from dependencies
-import "@needle-tools/samples-scripts/codegen/register_types.ts"
-
+// Import types from dependencies
 /* eslint-disable */
 import { TypeStore } from "@needle-tools/engine"
 
