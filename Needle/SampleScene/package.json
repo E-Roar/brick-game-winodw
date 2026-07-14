@@ -23,7 +23,7 @@
 	  "react-redux": "^9.3.0",
 	  "redux-immutable": "^4.0.0",
 	  "three": "npm:@needle-tools/three@0.169.19",
-	  "@needle-tools/samples-scripts": "file:../../Library/PackageCache/com.needle.engine-samples@493d87266351/Runtime/_Shared/SampleScripts~"
+	  "@needle-tools/samples-scripts": "file:./samples-scripts"
 	},
   "devDependencies": {
     "@needle-tools/helper": "2.0.0",
